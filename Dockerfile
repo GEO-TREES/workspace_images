@@ -1,5 +1,6 @@
 FROM jupyter/base-notebook:ubuntu-22.04
 
+USER root
 # Might be possible to copy binaries from published images
 # Avoid prompts from apt
 ENV DEBIAN_FRONTEND=noninteractive
