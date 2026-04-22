@@ -8,7 +8,12 @@ RUN apt-get clean && apt-get update && \
     libgdal-dev \
     libgeos-dev \
     libproj-dev \
+    proj-bin \
+    proj-data \
     libudunits2-dev \
+    libcurl4-openssl-dev \
+    libssl-dev \
+    libxml2-dev \
     build-essential \
     g++ \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
@@ -17,7 +22,12 @@ COPY install.R /tmp/install.R
 
 SHELL ["/bin/bash", "-c"]
 
-RUN export PATH=/usr/local/bin:/usr/bin:/bin:$PATH && \
+RUN env -i \
+    HOME=/root \
+    PATH=/usr/local/bin:/usr/bin:/bin \
+    GDAL_CONFIG=/usr/bin/gdal-config \
+    PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig:/usr/share/pkgconfig \
+    LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:/usr/lib:/lib \
     Rscript /tmp/install.R
 
 USER ${NB_USER}
