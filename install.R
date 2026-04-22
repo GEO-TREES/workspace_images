@@ -1,3 +1,6 @@
 install.packages("tidyverse")
 install.packages("terra")
-install.packages('lasR', repos = 'https://r-lidar.r-universe.dev')
+install.packages(
+  "lasR",
+  repos = c("https://r-lidar.r-universe.dev", "https://cloud.r-project.org")
+)
