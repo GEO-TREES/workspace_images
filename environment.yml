@@ -5,3 +5,4 @@ dependencies:
   - pip
   - pip:
     - maap-py==4.2.0
+    - jupyter-keepalive
